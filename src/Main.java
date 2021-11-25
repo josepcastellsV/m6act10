@@ -27,48 +27,48 @@ public class Main {
 
         //Cercar persones que no existeixen
         Empleat pers5 = new Empleat("x", null);
-        CercarPersona(db, pers5);
+        CercarEmpelat(db, pers5);
 
         //Cercar les persones de nom Anna
         pers5 = new Empleat("Anna", null);
-        CercarPersona(db, pers5);
+        CercarEmpelat(db, pers5);
 
         //Cercar les persones que viuen a Valls
         pers5 = new Empleat(null, "Valls");
-        CercarPersona(db, pers5);
+        CercarEmpelat(db, pers5);
 
         //Llistar totes les persones
-        CercarPersona(db, new Empleat());
+        CercarEmpelat(db, new Empleat());
 
         //Modificar el registre de les persones de nom Antonio
         pers5 = new Empleat("Antonio", null);
         Empleat pers6 = new Empleat("Joan", "Vendrell");
-        ModificarPersona(db, pers5, pers6);
+        ModificarEmpelat(db, pers5, pers6);
 
         //Modificar el registre de les persones que viuen a Tarragona
         pers5 = new Empleat(null, "Tarragona");
         pers6 = new Empleat("Alicia", "Reus");
-        ModificarPersona(db, pers5, pers6);
+        ModificarEmpelat(db, pers5, pers6);
 
         //De nou llistar totes les persones
-        CercarPersona(db, new Empleat());
+        CercarEmpelat(db, new Empleat());
 
         //Modificar el registre de les persones de nom Elena
-        EsborrarPersona(db, pers4);
+        EsborrarEmpelat(db, pers4);
 
         //Modificar el registre de les persones que viuen a Reus
         pers5 = new Empleat(null, "Reus");
-        EsborrarPersona(db, pers5);
+        EsborrarEmpelat(db, pers5);
 
         //De nou llistar totes les persones
-        CercarPersona(db, new Empleat());
+        CercarEmpelat(db, new Empleat());
 
         //Es tanca la base de dades
         db.close();
     }
 
     //Cerca una Persona (persona) a la base de dades (dataBase)
-    public static void CercarPersona(ObjectContainer dataBase, Empleat empleat) {
+    public static void CercarEmpelat(ObjectContainer dataBase, Empleat empleat) {
         ObjectSet<Empleat> resultat = dataBase.queryByExample(empleat);
         if (resultat.size() == 0) {
             System.out.println("No hi ha Registres d'aquestes persones..\n");
@@ -84,7 +84,7 @@ public class Main {
     }
 
     //Substitueix la Persona (vella) per la Persona(nova) a la base de dades(dataBase)
-    public static void ModificarPersona(ObjectContainer dataBase, Empleat vella, Empleat nova) {
+    public static void ModificarEmpelat(ObjectContainer dataBase, Empleat vella, Empleat nova) {
         ObjectSet<Empleat> resultat = dataBase.queryByExample(vella);
         if (resultat.size() == 0) {
             System.out.println("No existeix la persona de nom: " + vella.getNom() + "que viu a: " + vella.getCiutat() + "\n");
@@ -99,7 +99,7 @@ public class Main {
 
 
     //Esborra de la base de dades(dataBase) a la Persona(persona)
-    public static void EsborrarPersona(ObjectContainer dataBase, Empleat empleat) {
+    public static void EsborrarEmpelat(ObjectContainer dataBase, Empleat empleat) {
         ObjectSet<Empleat> resultat = dataBase.queryByExample(empleat);
         if (resultat.size() == 0) {
             System.out.println("No existeix la persona de nom: " + empleat.getNom() + "que viu a: " + empleat.getCiutat() + "\n");
